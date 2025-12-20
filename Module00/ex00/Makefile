@@ -11,8 +11,8 @@
 # **************************************************************************** #
 
 NAME    = megaphone
-CXX     = g++
-CXXFLAGS= -std=c++11 -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS    = megaphone.cpp
 
 all: $(NAME)
