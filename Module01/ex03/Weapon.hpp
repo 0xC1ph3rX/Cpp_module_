@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtarza <mtarza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/18 21:56:42 by mtarza            #+#    #+#             */
-/*   Updated: 2025/12/18 21:56:45 by mtarza           ###   ########.fr       */
+/*   Created: 2025/12/18 22:01:14 by mtarza            #+#    #+#             */
+/*   Updated: 2025/12/18 23:22:54 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
+#include <string>
 
-int main()
-{
-	std::string string =  "HI THIS IS BRAIN";
-	std::string* stringPTR = &string;
-	std::string& stringREF = string;
+class Weapon {
 
-	std::cout << &string << std::endl;
-	std::cout << stringPTR << std::endl;
-	std::cout << &stringREF << std::endl;
+	std::string type;
 
-	std::cout << string << std::endl;
-	std::cout << *stringPTR << std::endl;
-	std::cout << stringREF << std::endl;
-}
+public:
+	Weapon(const std::string &type);
+	const std::string &getType() const;
+	void setType(const std::string &type);
+};
+#endif

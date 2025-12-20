@@ -5,16 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mtarza <mtarza@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/12/18 21:56:40 by mtarza            #+#    #+#              #
-#    Updated: 2025/12/18 21:56:47 by mtarza           ###   ########.fr        #
+#    Created: 2025/12/18 22:50:35 by mtarza            #+#    #+#              #
+#    Updated: 2025/12/18 23:23:08 by mtarza           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = reference
+NAME = Violence
+CC = c++ 
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+CLEAN = rm -Rf
+SRC = 	main.cpp \
+		Weapon.cpp \
+		HumanA.cpp \
+		HumanB.cpp
 
-CC = c++
+OBJS := $(SRC:.cpp=.o)
 
-FLAGS = -g3 -Wall -Wextra -Werror -std=c++98
 
 BOLD	:= \033[1m
 BLACK	:= \033[30;1m
@@ -27,27 +33,25 @@ CYAN	:= \033[36;1m
 WHITE	:= \033[37;1m
 RST		:= \033[0m
 
-SRC_FILES = main.cpp
-SRC_OBJS = $(SRC_FILES:.cpp=.o)
-
 all: $(NAME)
 
-$(NAME): $(SRC_OBJS)
-	@$(CC) $(FLAGS) $(SRC_OBJS) -o $(NAME)
-	@printf "$(GREEN)Built$(RST) $(CYAN)%s$(RST)\n" "$(NAME)"
+%.o:%.cpp
+	@$(CC) -c $(CPPFLAGS) $< -o $@
+	@echo "$(GREEN)The object file $@ was successfully compiled. $(RST)"
 
-%.o: %.cpp
-	@$(CC) $(FLAGS) -o $@ -c $<
-	@printf "$(YELLOW)Compiled$(RST) %s\n" "$@"
+$(NAME): $(OBJS)
+	@$(CC) $(CPPFLAGS) $(SRC) -o $(NAME)
+	@echo "$(GREEN)The app $(NAME) was successfully compiled. $(RST)"
 
 clean:
-	@rm -f $(SRC_OBJS)
-	@printf "$(RED)Removed$(RST) objects\n"
+	@$(CLEAN) $(OBJS)
+	@echo "$(RED)Removing:$(RST) all objects files of $(NAME) app."
 
 fclean: clean
-	@rm -f  $(NAME)
-	@printf "$(RED)Removed$(RST) $(CYAN)%s$(RST)\n" "$(NAME)"
+	@$(CLEAN) $(NAME)
+	@echo "$(RED)Removing:$(RST) $(NAME) app."
+	@echo "$(RED)Cleaned up!$(RST)"
 
-re: fclean all
+re: clean fclean all
 
-.PHONY: all clean fclean re
+.PHONY : all fclean re clean

@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtarza <mtarza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/18 21:56:42 by mtarza            #+#    #+#             */
-/*   Updated: 2025/12/18 21:56:45 by mtarza           ###   ########.fr       */
+/*   Created: 2025/12/18 23:22:42 by mtarza            #+#    #+#             */
+/*   Updated: 2025/12/18 23:23:14 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "HumanA.hpp"
 
-int main()
+HumanA::HumanA(const std::string &name, Weapon &weapon) : _name(name), _weapon(weapon) {}
+
+HumanA::~HumanA() {}
+
+void HumanA::attack() const
 {
-	std::string string =  "HI THIS IS BRAIN";
-	std::string* stringPTR = &string;
-	std::string& stringREF = string;
-
-	std::cout << &string << std::endl;
-	std::cout << stringPTR << std::endl;
-	std::cout << &stringREF << std::endl;
-
-	std::cout << string << std::endl;
-	std::cout << *stringPTR << std::endl;
-	std::cout << stringREF << std::endl;
+	std::cout << _name << " attacks with their " << _weapon.getType() << std::endl;
 }

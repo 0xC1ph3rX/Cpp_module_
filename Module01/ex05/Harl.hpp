@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtarza <mtarza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/18 21:56:42 by mtarza            #+#    #+#             */
-/*   Updated: 2025/12/18 21:56:45 by mtarza           ###   ########.fr       */
+/*   Created: 2025/12/19 19:04:36 by mtarza            #+#    #+#             */
+/*   Updated: 2025/12/19 19:04:44 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef HARL_HPP
+#define HARL_HPP
 
-int main()
+#include <string>
+
+class Harl
 {
-	std::string string =  "HI THIS IS BRAIN";
-	std::string* stringPTR = &string;
-	std::string& stringREF = string;
+	private:
+		void	_debug(void);
+		void	_info(void);
+		void	_warning(void);
+		void	_error(void);
 
-	std::cout << &string << std::endl;
-	std::cout << stringPTR << std::endl;
-	std::cout << &stringREF << std::endl;
+	public:
+		Harl(void);
+		~Harl(void);
 
-	std::cout << string << std::endl;
-	std::cout << *stringPTR << std::endl;
-	std::cout << stringREF << std::endl;
-}
+		void	complain(std::string level);
+};
+
+#endif

@@ -5,16 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mtarza <mtarza@student.1337.ma>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/12/18 21:56:40 by mtarza            #+#    #+#              #
-#    Updated: 2025/12/18 21:56:47 by mtarza           ###   ########.fr        #
+#    Created: 2025/12/19 19:04:57 by mtarza            #+#    #+#              #
+#    Updated: 2025/12/19 19:04:58 by mtarza           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = reference
+NAME := replace
 
-CC = c++
-
-FLAGS = -g3 -Wall -Wextra -Werror -std=c++98
+CXX := c++
+CXXFLAGS := -Wall -Wextra -Werror -std=c++98
 
 BOLD	:= \033[1m
 BLACK	:= \033[30;1m
@@ -27,26 +26,26 @@ CYAN	:= \033[36;1m
 WHITE	:= \033[37;1m
 RST		:= \033[0m
 
-SRC_FILES = main.cpp
-SRC_OBJS = $(SRC_FILES:.cpp=.o)
+SRCS := main.cpp
+OBJS := $(SRCS:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME): $(SRC_OBJS)
-	@$(CC) $(FLAGS) $(SRC_OBJS) -o $(NAME)
-	@printf "$(GREEN)Built$(RST) $(CYAN)%s$(RST)\n" "$(NAME)"
+$(NAME): $(OBJS)
+	@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	@echo "$(GREEN)Built$(RST) $(CYAN)$(NAME)$(RST)"
 
 %.o: %.cpp
-	@$(CC) $(FLAGS) -o $@ -c $<
-	@printf "$(YELLOW)Compiled$(RST) %s\n" "$@"
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
+	@echo "$(YELLOW)Compiled$(RST) $@"
 
 clean:
-	@rm -f $(SRC_OBJS)
-	@printf "$(RED)Removed$(RST) objects\n"
+	@rm -f $(OBJS)
+	@echo "$(RED)Removed$(RST) objects"
 
 fclean: clean
-	@rm -f  $(NAME)
-	@printf "$(RED)Removed$(RST) $(CYAN)%s$(RST)\n" "$(NAME)"
+	@rm -f $(NAME)
+	@echo "$(RED)Removed$(RST) $(CYAN)$(NAME)$(RST)"
 
 re: fclean all
 

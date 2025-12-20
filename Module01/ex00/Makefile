@@ -1,5 +1,4 @@
 NAME = Zombie
-USER := $(shell whoami)
 CC = c++ 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 CLEAN = rm -Rf
@@ -26,21 +25,21 @@ all: $(NAME)
 
 %.o:%.cpp
 	@$(CC) -c $(CPPFLAGS) $< -o $@
-	@echo "$(GREEN)The object file $@ was successfully compiled. $(RST)"
+	@printf "$(GREEN)The object file %s was successfully compiled.$(RST)\n" "$@"
 
 $(NAME): $(OBJS)
 	@$(CC) $(CPPFLAGS) $(SRC) -o $(NAME)
-	@echo "$(GREEN)The app $(NAME) was successfully compiled. $(RST)"
+	@printf "$(GREEN)The app %s was successfully compiled.$(RST)\n" "$(NAME)"
 
 clean:
 	@$(CLEAN) $(OBJS)
-	@echo "$(RED)Removing:$(RST) all objects files of $(NAME) app."
+	@printf "$(RED)Removing:$(RST) all objects files of %s app.\n" "$(NAME)"
 
 fclean: clean
 	@$(CLEAN) $(NAME)
-	@echo "$(RED)Removing:$(RST) $(NAME) app."
-	@echo "$(RED)Cleaned up!$(RST)"
+	@printf "$(RED)Removing:$(RST) %s app.\n" "$(NAME)"
+	@printf "$(RED)Cleaned up!$(RST)\n"
 
 re: clean fclean all
 
-.PHONY : all fclean re
+.PHONY : all fclean re clean
