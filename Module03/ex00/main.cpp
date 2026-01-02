@@ -19,10 +19,9 @@ int main()
     std::cout << CLR_YELLOW << "\n-- Construct & copy --" << CLR_RESET << std::endl;
     ClapTrap alpha("Alpha");
     ClapTrap beta("Beta");
-    ClapTrap gamma(alpha); // copy constructor
-    ClapTrap delta;
-    delta = beta;          // assignment
-
+    ClapTrap gamma(alpha);
+    ClapTrap delta;  
+    delta = beta;          
     std::cout << CLR_YELLOW << "\n-- Attack until energy dries up --" << CLR_RESET << std::endl;
     for (int i = 0; i < 11; ++i)
         alpha.attack("training dummy");
@@ -30,9 +29,9 @@ int main()
     std::cout << CLR_YELLOW << "\n-- Damage and repair cycles --" << CLR_RESET << std::endl;
     alpha.takeDamage(4);
     alpha.beRepaired(3);
-    alpha.takeDamage(20);      // drops to 0 HP
-    alpha.attack("Ghost");     // should fail: 0 HP
-    alpha.beRepaired(5);       // should fail: 0 HP
+    alpha.takeDamage(20);      
+    alpha.attack("Ghost");     
+    alpha.beRepaired(5);       
 
     std::cout << CLR_YELLOW << "\n-- Independent ClapTrap run --" << CLR_RESET << std::endl;
     ClapTrap healer("Healer");
